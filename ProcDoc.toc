@@ -1,7 +1,8 @@
 ## Interface: 11200
-## Title: ProcDoc
-## Notes: Doctor up your proc alerts with pulsing images to make sure you never miss a proc.
-## Author: Clempton, Clumpton, Fruiter
+## Title: ProcDoc |cff008000Turtle|r SA
+## Notes: Versión modificada de ProcDoc para Turtle WoW SA.
+## Notes-enUS: Doctor up your proc alerts with pulsing images to make sure you never miss a proc.
+## Author: Clempton, Clumpton, Fruiter, TonyG-Bot
 ## Version: 2.4.1
 ## SavedVariables: ProcDocDB
 
