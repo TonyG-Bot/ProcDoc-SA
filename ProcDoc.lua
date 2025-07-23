@@ -3,6 +3,89 @@
 ------------------------------------------------------------
 -- 0) GLOBALS
 ------------------------------------------------------------
+local function initializeLocalization()
+        local locale = GetLocale() or "enUS" -- Obtener el idioma del cliente de WoW
+        local localizedBuffName = {}
+
+		if locale == "esES" then
+			-- Nombres localizados para español
+			localizedBuffName = {
+				["Shadow Trance"] = "Trance Sombrío",
+				["Shadow Veil"] = "Shadow Veil", -- Creo no tiene traduccion
+				["Spell Blasting"] = "Explosión Mágica",
+				["Clearcasting"] = "Lanzamiento Claro",
+				["Netherwind Focus"] = "Enfoque del Viento del Vacío",
+				["Temporal Convergence"] = "Convergencia Temporal",
+				["Flash Freeze"] = "Congelación Relámpago",
+				["Arcane Rupture"] = "Ruptura Arcana",
+				["Nature's Grace"] = "Gracia de la Naturaleza",
+				["Tiger's Fury"] = "Furia del Tigre",
+				["Astral Boon"] = "Bendición Astral",
+				["Natural Boon"] = "Bendición Natural",
+				["Arcane Eclipse"] = "Eclipse Arcano",
+				["Nature Eclipse"] = "Eclipse de la Naturaleza",
+				["Nature's Swiftness"] = "Rapidez de la Naturaleza",
+				["Stormstrike"] = "Golpe de Tormenta",
+				["Flurry"] = "Torbellino",
+				["Quick Shots"] = "Disparos Rápidos",
+				["Enrage"] = "Enfurecer",
+				["Resurgence"] = "Resurgir",
+				["Enlightened"] = "Iluminado",
+				["Searing Light"] = "Luz Ardiente",
+				["Daybreak"] = "Amanecer",
+				["Remorseless"] = "Implacable",
+				["Riposte"] = "Replicar",
+				["Surprise Attack"] = "Ataque Sorpresa",
+				["Overpower"] = "Abrumar",
+				["Execute"] = "Ejecutar",
+				["Counterattack"] = "Contraataque",
+				["Revenge"] = "Venganza",
+				["Arcane Surge"] = "Oleada Arcana",
+				["Hammer of Wrath"] = "Martillo de Ira",
+			}
+		else
+			-- Inglés como idioma predeterminado
+			localizedBuffName = {
+				["Shadow Trance"] = "Shadow Trance",
+				["Shadow Veil"] = "Shadow Veil",
+				["Spell Blasting"] = "Spell Blasting",
+				["Clearcasting"] = "Clearcasting",
+				["Netherwind Focus"] = "Netherwind Focus",
+				["Temporal Convergence"] = "Temporal Convergence",
+				["Flash Freeze"] = "Flash Freeze",
+				["Arcane Rupture"] = "Arcane Rupture",
+				["Nature's Grace"] = "Nature's Grace",
+				["Tiger's Fury"] = "Tiger's Fury",
+				["Astral Boon"] = "Astral Boon",
+				["Natural Boon"] = "Natural Boon",
+				["Arcane Eclipse"] = "Arcane Eclipse",
+				["Nature Eclipse"] = "Nature Eclipse",
+				["Nature's Swiftness"] = "Nature's Swiftness",
+				["Stormstrike"] = "Stormstrike",
+				["Flurry"] = "Flurry",
+				["Quick Shots"] = "Quick Shots",
+				["Enrage"] = "Enrage",
+				["Resurgence"] = "Resurgence",
+				["Enlightened"] = "Enlightened",
+				["Searing Light"] = "Searing Light",
+				["Daybreak"] = "Daybreak",
+				["Remorseless"] = "Remorseless",
+				["Riposte"] = "Riposte",
+				["Surprise Attack"] = "Surprise Attack",
+				["Overpower"] = "Overpower",
+				["Execute"] = "Execute",
+				["Counterattack"] = "Counterattack",
+				["Revenge"] = "Revenge",
+				["Arcane Surge"] = "Arcane Surge",
+				["Hammer of Wrath"] = "Hammer of Wrath",
+			}
+		end
+
+		return localizedBuffName
+	end
+
+	local localizedBuffName = initializeLocalization()
+
 
 -- 1) CREATE A FRAME TO INITIALIZE DB
 local initFrame = CreateFrame("Frame", "ProcDocDBInitFrame", UIParent)
@@ -55,7 +138,7 @@ local ProcDoc   = CreateFrame("Frame", "ProcDocAlertFrame", UIParent)
 local PROC_DATA = {
     ["WARLOCK"] = {
         {
-            buffName         = "Shadow Trance",
+            buffName         = localizedBuffName["Shadow Trance"],
             texture          = "Interface\\Icons\\Spell_Shadow_Twilight",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\WarlockShadowTrance.tga",
             alertStyle       = "SIDES",
@@ -63,31 +146,31 @@ local PROC_DATA = {
     },
     ["MAGE"] = {
         {
-            buffName         = "Clearcasting",
+            buffName         = localizedBuffName["Clearcasting"],
             texture          = "Interface\\Icons\\Spell_Shadow_ManaBurn",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidClearcasting.tga",
             alertStyle       = "TOP",
         },
         {
-            buffName         = "Netherwind Focus",
+            buffName         = localizedBuffName["Netherwind Focus"],
             texture          = "Interface\\Icons\\Spell_Shadow_Teleport",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\MageT2.tga",
             alertStyle       = "SIDES2",
         },
         {
-            buffName         = "Temporal Convergence",
+            buffName         = localizedBuffName["Temporal Convergence"],
             texture          = "Interface\\Icons\\Spell_Nature_StormReach",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\MageTemporalConvergence.tga",
             alertStyle       = "SIDES2",
         },
         {
-            buffName         = "Flash Freeze",
+            buffName         = localizedBuffName["Flash Freeze"],
             texture          = "Interface\\Icons\\Spell_Fire_FrostResistanceTotem",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\MageFlashFreeze.tga",
             alertStyle       = "SIDES",
         },
         {
-            buffName         = "Arcane Rupture",
+            buffName         = localizedBuffName["Arcane Rupture"],
             texture          = "Interface\\Icons\\Spell_Arcane_Blast",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\MageArcaneRupture.tga",
             alertStyle       = "SIDES",
@@ -95,43 +178,43 @@ local PROC_DATA = {
     },
     ["DRUID"] = {
         {
-            buffName         = "Clearcasting",
+            buffName         = localizedBuffName["Clearcasting"],
             texture          = "Interface\\Icons\\Spell_Shadow_ManaBurn",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidClearcasting.tga",
             alertStyle       = "TOP",
         },
         {
-            buffName         = "Nature's Grace",
+            buffName         = localizedBuffName["Nature's Grace"],
             texture          = "Interface\\Icons\\Spell_Nature_NaturesBlessing",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidNaturesGrace.tga",
             alertStyle       = "SIDES",
         },
         {
-            buffName         = "Tiger's Fury",
+            buffName         = localizedBuffName["Tiger's Fury"],
             texture          = "Interface\\Icons\\Ability_Mount_JungleTiger",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\HunterMongooseBite.tga",
             alertStyle       = "SIDES2",
         },
         {
-            buffName         = "Astral Boon",
+            buffName         = localizedBuffName["Astral Boon"],
             texture          = "Interface\\Icons\\Spell_Arcane_StarFire",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidAstralBoon.tga",
             alertStyle       = "TOP2",
         },
         {
-            buffName         = "Natural Boon",
+            buffName         = localizedBuffName["Natural Boon"],
             texture          = "Interface\\Icons\\Spell_Nature_AbolishMagic",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidNaturalBoon.tga",
             alertStyle       = "TOP2",
         },
         {
-            buffName         = "Arcane Eclipse",
+            buffName         = localizedBuffName["Arcane Eclipse"],
             texture          = "Interface\\Icons\\Spell_Nature_WispSplode",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidArcaneEclipse.tga",
             alertStyle       = "SIDES2",
         },
         {
-            buffName         = "Nature Eclipse",
+            buffName         = localizedBuffName["Nature Eclipse"],
             texture          = "Interface\\Icons\\Spell_Nature_AbolishMagic",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidNatureEclipse.tga",
             alertStyle       = "SIDES2",
@@ -139,25 +222,25 @@ local PROC_DATA = {
     },
     ["SHAMAN"] = {
         {
-            buffName         = "Clearcasting",
+            buffName         = localizedBuffName["Clearcasting"],
             texture          = "Interface\\Icons\\Spell_Shadow_ManaBurn",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidClearcasting.tga",
             alertStyle       = "TOP",
         },
         {
-            buffName         = "Nature's Swiftness",
+            buffName         = localizedBuffName["Nature's Swiftness"],
             texture          = "Interface\\Icons\\Spell_Nature_RavenForm",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\DruidNaturesGrace.tga",
             alertStyle       = "SIDES",
         },
         {
-            buffName         = "Stormstrike",
+            buffName         = localizedBuffName["Stormstrike"],
             texture          = "Interface\\Icons\\Ability_Shaman_StormStrike",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\ShamanStormstrike.tga",
             alertStyle       = "TOP2",
         },
         {
-            buffName         = "Flurry",
+            buffName         = localizedBuffName["Flurry"],
             texture          = "Interface\\Icons\\Ability_GhoulFrenzy",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\HunterMongooseBite.tga",
             alertStyle       = "SIDES2",
@@ -165,7 +248,7 @@ local PROC_DATA = {
     },
     ["HUNTER"] = {
         {
-            buffName         = "Quick Shots",
+            buffName         = localizedBuffName["Quick Shots"],
             texture          = "Interface\\Icons\\Ability_Warrior_InnerRage",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\HunterQuickShots.tga",
             alertStyle       = "SIDES",
@@ -173,7 +256,7 @@ local PROC_DATA = {
     },
     ["WARRIOR"] = {
         {
-            buffName         = "Enrage",
+            buffName         = localizedBuffName["Enrage"],
             texture          = "Interface\\Icons\\Spell_Shadow_UnholyFrenzy",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\WarriorEnrage.tga",
             alertStyle       = "SIDES",
@@ -181,31 +264,31 @@ local PROC_DATA = {
     },
     ["PRIEST"] = {
         {
-            buffName         = "Resurgence",
+            buffName         = localizedBuffName["Resurgence"],
             texture          = "Interface\\Icons\\Spell_Holy_MindVision",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\PriestResurgence.tga",
             alertStyle       = "SIDES",
         },
         {
-            buffName         = "Enlightened",
+            buffName         = localizedBuffName["Enlightened"],
             texture          = "Interface\\Icons\\Spell_Holy_PowerInfusion",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\PriestEnlightened.tga",
             alertStyle       = "TOP",
         },
         {
-            buffName         = "Searing Light",
+            buffName         = localizedBuffName["Searing Light"],
             texture          = "Interface\\Icons\\Spell_Holy_SearingLightPriest",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\PriestSearingLight.tga",
             alertStyle       = "SIDES2",
         },
         {
-            buffName         = "Shadow Veil",
+            buffName         = localizedBuffName["Shadow Veil"],
             texture          = "Interface\\Icons\\Spell_Shadow_GatherShadows",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\PriestShadowVeil.tga",
             alertStyle       = "SIDES",
         },
         {
-            buffName         = "Spell Blasting",
+            buffName         = localizedBuffName["Spell Blasting"],
             texture          = "Interface\\Icons\\Spell_Lightning_LightningBolt01",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\PriestSpellBlasting.tga",
             alertStyle       = "TOP2",
@@ -213,7 +296,7 @@ local PROC_DATA = {
     },
     ["PALADIN"] = {
         {
-            buffName         = "Daybreak",
+            buffName         = localizedBuffName["Daybreak"],
             texture          = "Interface\\Icons\\Spell_Holy_AuraMastery",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\PaladinDaybreak.tga",
             alertStyle       = "TOP",
@@ -221,7 +304,7 @@ local PROC_DATA = {
     },
     ["ROGUE"] = {
         {
-            buffName         = "Remorseless",
+            buffName         = localizedBuffName["Remorseless"],
             texture          = "Interface\\Icons\\Ability_FiegnDead",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\RogueRemorseless.tga",
             alertStyle       = "SIDES",
@@ -232,75 +315,75 @@ local PROC_DATA = {
 local ACTION_PROCS = {
     ["ROGUE"] = {
         {
-            buffName        = "Riposte",  
+            buffName        = localizedBuffName["Riposte"],
             texture         = "Interface\\Icons\\Ability_Warrior_Challange",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\RogueRiposte.tga",
             alertStyle      = "SIDES",
-            spellName       = "Riposte"
+            spellName       = localizedBuffName["Riposte"],
         },
         {
-            buffName        = "Surprise Attack",  
+            buffName        = localizedBuffName["Surprise Attack"],
             texture         = "Interface\\Icons\\Ability_Rogue_SurpriseAttack",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\RogueSuddenDeath.tga",
             alertStyle      = "SIDES2",
-            spellName       = "Surprise Attack"
+            spellName       = localizedBuffName["Surprise Attack"],
         },
     },
     ["WARRIOR"] = {
         {
-            buffName        = "Overpower", 
+            buffName        = localizedBuffName["Overpower"],
             texture         = "Interface\\Icons\\Ability_MeleeDamage",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\WarriorOverpower.tga",
             alertStyle      = "TOP",
-            spellName       = "Overpower"
+            spellName       = localizedBuffName["Overpower"],
         },
         {
-            buffName        = "Execute", 
+            buffName        = localizedBuffName["Execute"],
             texture         = "Interface\\Icons\\inv_sword_48",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\WarriorExecute.tga",
             alertStyle      = "SIDES2",
-            spellName       = "Execute"
+            spellName       = localizedBuffName["Execute"],
         },
         {
-            buffName        = "Counterattack",
+            buffName        = localizedBuffName["Counterattack"],
             texture         = "Interface\\Icons\\Ability_Warrior_Riposte",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\WarriorCounterattack.tga",
             alertStyle      = "SIDES",
-            spellName       = "Counterattack"
+            spellName       = localizedBuffName["Counterattack"],
         },
         {
-            buffName       = "Revenge",
+            buffName        = localizedBuffName["Revenge"],
             texture         = "Interface\\Icons\\Ability_Warrior_Revenge",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\WarriorRevenge.tga",
             alertStyle      = "SIDES2",
-            spellName       = "Revenge"
+            spellName       = localizedBuffName["Revenge"],
         }
     },
     ["MAGE"] = {
         {
-            buffName        = "Arcane Surge", 
+            buffName        = localizedBuffName["Arcane Surge"],
             texture         = "Interface\\Icons\\INV_Enchant_EssenceMysticalLarge",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\MageArcaneSurge.tga",
             alertStyle      = "TOP2",
-            spellName       = "Arcane Surge"
+            spellName       = localizedBuffName["Arcane Surge"],
         },
     },
     ["HUNTER"] = {
         {
-            buffName        = "Counterattack", 
+            buffName        = localizedBuffName["Counterattack"],
             texture         = "Interface\\Icons\\Ability_Warrior_Challange",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\HunterCounterattack.tga",
             alertStyle      = "TOP",
-            spellName       = "Counterattack"
+            spellName       = localizedBuffName["Counterattack"],
         },
     },
     ["PALADIN"] = {
         {
-            buffName        = "Hammer of Wrath", 
+            buffName        = localizedBuffName["Hammer of Wrath"],
             texture         = "Interface\\Icons\\Ability_Thunderclap",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\PaladinHammer.tga",
             alertStyle      = "SIDES",
-            spellName       = "Hammer of Wrath"
+            spellName       = localizedBuffName["Hammer of Wrath"],
         },    
 
     },
