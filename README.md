@@ -24,11 +24,13 @@
 
 1. **Open Up Turtle-WoW Launcher** and click on the  **`ADDONS`** tab at the top of the window.
 ![Click Addons](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Install1.png)
-2.  **At the bottom of the window,** press `+ Add new addon`. A new screen will appear that says `Enter a URL to install the addon from.`
+2. **Scroll Down** to the **`AVAILABLE`** tab and find the **ProcDoc** addon. Click the Download button to the right. This will complete the installation of the addon and there is no need to move forward.
+![](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Install4.png)
+3. **If ProcDoc is not in the `AVAILABLE` tab,** at the bottom of the window press `+ Add new addon`. A new screen will appear that says `Enter a URL to install the addon from.`
 ![Click Add](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Install2.png)
-3. **In the text box,** enter in the web address `https://github.com/wsmaxcy/ProcDoc`. If done correctly, a github repository will appear and you will see a beautiful face appear in the window.
+4. **In the text box,** enter in the web address `https://github.com/wsmaxcy/ProcDoc`. If done correctly, a github repository will appear and you will see a beautiful face appear in the window.
 ![Add Repo](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Install3.png)
-4. **Press Install** and you're good to go! Enjoy your proc animations!
+5. **Press Install** and you're good to go! Enjoy your proc animations!
 
 ---
 
@@ -58,80 +60,73 @@ You can experiment with these in the **`/procdoc`** panel. Changes are saved aut
 
 ## Supported Procs
 
-ProcDoc supports a variety of procs and alerts when key abilities or buffs become available for each class. Below is a list of currently supported procs:
+<div align="center">
+  <p><strong>ProcDoc</strong> supports a variety of procs and alerts when key abilities or buffs become available for each class. Below is a list of currently supported procs:</p>
 
-### **Warlock**
-![Warlock](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Warlock.png)
-- **Shadow Trance (Nightfall)**
+  <h3><strong>Warlock</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Warlock.png" alt="Warlock">
+    <li><strong>Shadow Trance (Nightfall)</strong></li>
 
+  <h3><strong>Mage</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Mage.png" alt="Mage">
+    <li><strong>Clearcasting</strong></li>
+    <li><strong>Netherwind Focus</strong></li>
+    <li><strong>Temporal Convergence</strong></li>
+    <li><strong>Flash Freeze</strong></li>
+    <li><strong>Arcane Surge</strong></li>
+    <li><strong>Arcane Rupture</strong></li>
 
-### **Mage**
-![Mage](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Mage.png)
-- **Clearcasting**
-- **Netherwind Focus**
-- **Temporal Convergence**
-- **Flash Freeze**
-- **Arcane Surge**
-- **Arcane Rupture**
+  <h3><strong>Warrior</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Warrior.png" alt="Warrior">
+    <li><strong>Enrage</strong></li>
+    <li><strong>Overpower</strong></li>
+    <li><strong>Execute</strong></li>
+    <li><strong>Revenge</strong></li>
+    <li><strong>Counterattack</strong></li>
 
+  <h3><strong>Druid</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Druid.png" alt="Druid">
+    <li><strong>Clearcasting</strong></li>
+    <li><strong>Nature’s Grace</strong></li>
+    <li><strong>Tiger's Fury</strong></li>
+    <li><strong>Astral Boon</strong></li>
+    <li><strong>Natural Boon</strong></li>
+    <li><strong>Arcane Eclipse</strong></li>
+    <li><strong>Nature Eclipse</strong></li>
 
-### **Warrior**
-![Warrior](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Warrior.png)
-- **Enrage**
-- **Overpower**
-- **Execute**
-- **Revenge**
-- **Counterattack**
+  <h3><strong>Rogue</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Rogue.png" alt="Rogue">
+    <li><strong>Remorseless</strong></li>
+    <li><strong>Riposte</strong></li>
+    <li><strong>Surprise Attack</strong></li>
+    <li><strong>Tricks of the Trade</strong></li>
 
+  <h3><strong>Shaman</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Shaman.png" alt="Shaman">
+    <li><strong>Clearcasting</strong></li>
+    <li><strong>Nature's Swiftness</strong></li>
+    <li><strong>Stormstrike</strong></li>
+    <li><strong>Flurry</strong></li>
 
-### **Druid**
-![Druid](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Druid.png)
-- **Clearcasting**
-- **Nature’s Grace**
-- **Tiger's Fury**
-- **Astral Boon**
-- **Natural Boon**
-- **Arcane Eclipse**
-- **Nature Eclipse**
+  <h3><strong>Priest</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Priest.png" alt="Priest">
+    <li><strong>Resurgence</strong></li>
+    <li><strong>Enlightened</strong></li>
+    <li><strong>Searing Light</strong></li>
+    <li><strong>Shadow Veil</strong></li>
+    <li><strong>Spell Blasting</strong></li>
 
+  <h3><strong>Hunter</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Hunter.png" alt="Hunter">
+    <li><strong>Quick Shots</strong></li>
+    <li><strong>Lacerate</strong></li>
+    <li><strong>Baited Shot</strong></li>
 
-### **Rogue**
-![Rogue](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Rogue.png)
-
-- **Remorseless**
-- **Riposte**
-- **Surprise Attack**
-- **Tricks of the Trade**
-
-
-### **Shaman**
-![Shaman](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Shaman.png)
-
-- **Clearcasting**
-- **Nature's Swiftness**
-- **Stormstrike**
-- **Flurry**
-
-
-### **Priest**
-![Priest](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Priest.png)
-- **Resurgence**
-- **Enlightened**
-- **Searing Light**
-- **Shadow Veil**
-- **Spell Blasting**
-
-
-### **Hunter**
-![Hunter](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Hunter.png)
-- **Quick Shots**
-- **Lacerate**
-- **Baited Shot**
-
-
-### **Paladin**
-![Paladin](https://github.com/wsmaxcy/ProcDoc/blob/main/img/Paladin.png)
-- **Hammer of Wrath**
+  <h3><strong>Paladin</strong></h3>
+  <img src="https://github.com/wsmaxcy/ProcDoc/blob/main/img/Paladin.png" alt="Paladin">
+    <li><strong>Hammer of Wrath</strong></li>
+</div>
+<!-- END: Centered Supported Procs -->
 
 
 ### Additional Notes
