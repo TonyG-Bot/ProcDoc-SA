@@ -113,8 +113,8 @@ initFrame:SetScript("OnEvent", function()
         if gv.maxScale == nil then gv.maxScale = 1.0 end  -- new default (old default was 1.25)
         if gv.alphaStep == nil then gv.alphaStep = 0.01 end
         if gv.pulseSpeed == nil then gv.pulseSpeed = 0.4 end
-        if gv.topOffset == nil then gv.topOffset = 70 end
-        if gv.sideOffset == nil then gv.sideOffset = 60 end
+        if gv.topOffset == nil then gv.topOffset = 100 end
+        if gv.sideOffset == nil then gv.sideOffset = 150 end
         if gv.timerTextAlpha == nil then gv.timerTextAlpha = 0.85 end
         if gv.isMuted == nil then gv.isMuted = false end
         if gv.soundVolume == nil then gv.soundVolume = 1.0 end
@@ -2079,7 +2079,7 @@ SlashCmdList["PROCDOC"] = function(msg)
         if ProcDocDB and ProcDocDB.globalVars then
             local gv = ProcDocDB.globalVars
             gv.minAlpha = 0.8; gv.maxAlpha = 1.0; gv.minScale = 0.9; gv.maxScale = 1.0
-            gv.pulseSpeed = 0.4; gv.topOffset = 70; gv.sideOffset = 60
+            gv.pulseSpeed = 0.4; gv.topOffset = 100; gv.sideOffset = 150
             DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00ProcDoc|r settings reset to defaults. /reload to apply fully.")
         end
         return
