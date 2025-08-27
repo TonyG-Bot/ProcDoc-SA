@@ -27,10 +27,6 @@ initFrame:SetScript("OnEvent", function()
         if gv.soundVolume == nil then gv.soundVolume = 1.0 end
         if gv.disableTimers == nil then gv.disableTimers = false end
 
-        -- Migration: if user still has the old hard-coded maxScale 1.25 and never changed it, normalize to 1.0
-        if gv.maxScale == 1.25 then
-            gv.maxScale = 1.0
-        end
 
         minAlpha      = gv.minAlpha
         maxAlpha      = gv.maxAlpha
@@ -364,6 +360,37 @@ local HOT_STREAK_SIDE_TEXTURE = "Interface\\AddOns\\ProcDoc\\img\\WarriorRevenge
 local HOT_STREAK_TOP_TEXTURE  = "Interface\\AddOns\\ProcDoc\\img\\MageHotStreak.tga"
 local hotStreakLastTier = 0  -- 0,3,4,5 (we only care about tiers 3/4/5)
 
+
+-- Ensure DB tables exist and load saved globals
+local function ProcDoc_EnsureDB()
+    if not ProcDocDB then ProcDocDB = {} end
+    if not ProcDocDB.globalVars then ProcDocDB.globalVars = {} end
+    if not ProcDocDB.procsEnabled then ProcDocDB.procsEnabled = {} end
+    if not ProcDocDB.actionProcDurations then ProcDocDB.actionProcDurations = {} end
+end
+
+local function ProcDoc_LoadGlobalsFromDB()
+    ProcDoc_EnsureDB()
+    local gv = ProcDocDB.globalVars
+    -- Migrate any legacy fields
+    if gv.maxSize and not gv.maxScale then gv.maxScale = gv.maxSize; gv.maxSize = nil end
+
+    if gv.minAlpha   ~= nil then minAlpha   = gv.minAlpha   end
+    if gv.maxAlpha   ~= nil then maxAlpha   = gv.maxAlpha   end
+    if gv.minScale   ~= nil then minScale   = gv.minScale   end
+    if gv.maxScale   ~= nil then maxScale   = gv.maxScale   end
+    if gv.pulseSpeed ~= nil then pulseSpeed = gv.pulseSpeed end
+    if gv.topOffset  ~= nil then topOffset  = gv.topOffset  end
+    if gv.sideOffset ~= nil then sideOffset = gv.sideOffset end
+end
+
+-- Initialize once SavedVariables are available in vanilla (VARIABLES_LOADED) 
+local ProcDocInitFrame = CreateFrame("Frame", "ProcDocInitFrame", UIParent)
+ProcDocInitFrame:RegisterEvent("VARIABLES_LOADED")
+ProcDocInitFrame:SetScript("OnEvent", function()
+    ProcDoc_LoadGlobalsFromDB()
+end)
+
 local function GetActionProcDuration(spellName)
     if not spellName then return nil end
     local overrides = ProcDocDB.actionProcDurations
@@ -477,6 +504,44 @@ local function AcquireAlertFrame(style, isActionBased)
     newAlert.isActionBased = isActionBased
     table.insert(alertFrames, newAlert)
     return newAlert
+end
+
+-- Re-anchor an alert object's textures according to its style and current saved offsets
+local function ProcDoc_ReanchorAlert(alertObj)
+    if not alertObj or not alertObj.textures then return end
+    local style = alertObj.style
+    if style == "TOP" or style == "TOP2" then
+        local tex = alertObj.textures[1]
+        if tex then
+            tex:ClearAllPoints()
+            local offsetY = (style == "TOP2") and (topOffset + 50) or topOffset
+            tex:SetPoint("CENTER", UIParent, "CENTER", 0, offsetY)
+        end
+    elseif style == "SIDES" or style == "SIDES2" then
+        local left  = alertObj.textures[1]
+        local right = alertObj.textures[2]
+        local offsetX = (style == "SIDES2") and (sideOffset + 50) or sideOffset
+        if left then
+            left:ClearAllPoints()
+            left:SetPoint("CENTER", UIParent, "CENTER", -offsetX, topOffset - 150)
+        end
+        if right then
+            right:ClearAllPoints()
+            right:SetPoint("CENTER", UIParent, "CENTER",  offsetX, topOffset - 150)
+        end
+    elseif style == "LEFT" then
+        local tex = alertObj.textures[1]
+        if tex then
+            tex:ClearAllPoints()
+            tex:SetPoint("CENTER", UIParent, "CENTER", -(sideOffset + 50), topOffset - 150)
+        end
+    elseif style == "RIGHT" then
+        local tex = alertObj.textures[1]
+        if tex then
+            tex:ClearAllPoints()
+            tex:SetPoint("CENTER", UIParent, "CENTER",  (sideOffset + 50), topOffset - 150)
+        end
+    end
 end
 
 --------------------------------------------
@@ -661,6 +726,8 @@ local knownBuffProcs = {}
 local buffStackCounts = {}
 
 local function CheckProcs()
+    -- Ensure we are using the latest saved globals each time we show/update alerts
+    if ProcDoc_LoadGlobalsFromDB then ProcDoc_LoadGlobalsFromDB() end
     -- 1) Hide any old (buff-based) frames first
     for _, alertObj in ipairs(alertFrames) do
         if (not alertObj.isActionBased) then
@@ -752,8 +819,13 @@ local function CheckProcs()
         local path = procInfo.alertTexturePath or DEFAULT_ALERT_TEXTURE
         for _, tex in ipairs(alertObj.textures) do
             tex:SetTexture(path)
+            tex:SetAlpha(minAlpha)
+            tex:SetWidth(alertObj.baseWidth * minScale)
+            tex:SetHeight(alertObj.baseHeight * minScale)
             tex:Show()
         end
+    ProcDoc_ReanchorAlert(alertObj)
+        ProcDoc_ReanchorAlert(alertObj)
 
     -- Timer numeric countdown (replaces prior vertical wipe implementation)
         local timeLeft
@@ -890,6 +962,7 @@ local function CheckProcs()
                 tex:SetHeight(leftObj.baseHeight * minScale)
                 tex:Show()
             end
+            ProcDoc_ReanchorAlert(leftObj)
         end
         if tier >= 4 then
             -- RIGHT
@@ -904,6 +977,7 @@ local function CheckProcs()
                 tex:SetHeight(rightObj.baseHeight * minScale)
                 tex:Show()
             end
+            ProcDoc_ReanchorAlert(rightObj)
         end
         if tier >= 5 then
             -- TOP (use TOP2 for spacing consistency with existing top visuals)
@@ -918,6 +992,7 @@ local function CheckProcs()
                 tex:SetHeight(topObj.baseHeight * minScale)
                 tex:Show()
             end
+            ProcDoc_ReanchorAlert(topObj)
         end
 
         -- Play sound only on entering a new tier (avoid spam every scan)
@@ -936,6 +1011,8 @@ end
 local actionProcStates = {}
 
 local function ShowActionProcAlert(actionProc)
+    -- Sync from DB so we don't rely on options frame being opened first
+    if ProcDoc_LoadGlobalsFromDB then ProcDoc_LoadGlobalsFromDB() end
     local spellName  = actionProc.spellName or "UnknownSpell"
     local state      = actionProcStates[spellName] or {}
     actionProcStates[spellName] = state
