@@ -278,9 +278,15 @@ local PROC_DATA = {
     },
     ["HUNTER"] = {
         {
-            buffName         = localizedBuffName["Quick Shots"] or localizedBuffName["Quick Strikes"],
+            buffName         = localizedBuffName["Quick Shots"],
             texture          = "Interface\\Icons\\Ability_Warrior_InnerRage",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\HunterQuickShots.tga",
+            alertStyle       = "SIDES",
+        },
+		{
+            buffName         = localizedBuffName["Quick Strikes"],
+            texture          = "Interface\\Icons\\Ability_Warrior_InnerRage",
+            alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\HunterCounterattack.tga",
             alertStyle       = "SIDES",
         },
     },
