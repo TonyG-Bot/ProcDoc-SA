@@ -25,6 +25,7 @@ local function initializeLocalization()
 				["Stormstrike"] = "Golpe de Tormenta",
 				["Flurry"] = "Aluvión",
 				["Quick Shots"] = "Disparo Rápido",
+				["Quick Strikes"] = "Golpes Rápidos",
 				["Enrage"] = "Enfurecer",
 				["Resurgence"] = "Resurgir",
 				["Enlightened"] = "Iluminado",
@@ -65,6 +66,7 @@ local function initializeLocalization()
 				["Stormstrike"] = "Stormstrike",
 				["Flurry"] = "Flurry",
 				["Quick Shots"] = "Quick Shots",
+				["Quick Strikes"] = "Quick Strikes",
 				["Enrage"] = "Enrage",
 				["Resurgence"] = "Resurgence",
 				["Enlightened"] = "Enlightened",
@@ -276,7 +278,7 @@ local PROC_DATA = {
     },
     ["HUNTER"] = {
         {
-            buffName         = localizedBuffName["Quick Shots"],
+            buffName         = localizedBuffName["Quick Shots"] or localizedBuffName["Quick Strikes"],
             texture          = "Interface\\Icons\\Ability_Warrior_InnerRage",
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\HunterQuickShots.tga",
             alertStyle       = "SIDES",
