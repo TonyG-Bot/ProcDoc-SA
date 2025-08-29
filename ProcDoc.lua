@@ -297,12 +297,6 @@ local PROC_DATA = {
             alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\WarriorEnrage.tga",
             alertStyle       = "SIDES",
         },
-		{
-            buffName         = localizedBuffName["Flurry"],
-            texture          = "Interface\\Icons\\Ability_GhoulFrenzy",
-            alertTexturePath = "Interface\\AddOns\\ProcDoc\\img\\WarriorCounterattack.tga",
-            alertStyle       = "LEFT",
-        },
     },
     ["PRIEST"] = {
         {
@@ -393,7 +387,7 @@ local ACTION_PROCS = {
             spellName       = localizedBuffName["Execute"],
         },
         {
-            buffName        = localizedBuffName["Counterattack"],--Removed in 1.18?
+            buffName        = localizedBuffName["Counterattack"],
             texture         = "Interface\\Icons\\Ability_Warrior_Riposte",
             alertTexturePath= "Interface\\AddOns\\ProcDoc\\img\\WarriorCounterattack.tga",
             alertStyle      = "LEFT",
